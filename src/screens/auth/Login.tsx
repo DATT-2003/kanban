@@ -1,10 +1,12 @@
-import { Button, Card, Form, Input, Typography } from 'antd'
+import { Button, Card, Checkbox, Form, Input, Space, Typography } from 'antd'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SocialLogin from './components/SocialLogin'
 
-const { Title, Paragraph } = Typography
+const { Title, Paragraph, Text } = Typography
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [isRemember, setIsRemember] = useState(false);
 
     const [from] = Form.useForm()
     const handleLogin = (values: { email: string; password: string }) => {
@@ -14,9 +16,9 @@ const Login = () => {
         <div>
             <Card>
                 <div className="text-center">
-                    <Title>Login</Title>
-                    <Paragraph>
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    <Title level={2}>Log in to your account</Title>
+                    <Paragraph type='secondary'>
+                        Welcome back! Please enter your detail.
                     </Paragraph>
                 </div>
                 <Form layout='vertical' form={from} onFinish={handleLogin} disabled={isLoading} size='large'>
@@ -36,11 +38,22 @@ const Login = () => {
                                 message: 'Please enter your Password!!'
                             }
                         ]}>
-                        <Input allowClear maxLength={100} type='password' />
+                        <Input.Password maxLength={100} type='password' />
                     </Form.Item>
                 </Form>
 
-                <div className="mt-4">
+                <div className="row">
+                    <div className="col">
+                        <Checkbox checked={isRemember} onChange={(val) => setIsRemember(val.target.checked)}>
+                            Remember for 30 days
+                        </Checkbox>
+                    </div>
+                    <div className="col text-right">
+                        <Link to={'/'}>Forgot password ?</Link >
+                    </div>
+                </div>
+
+                <div className="mt-4 mb-3">
                     <Button onClick={() => from.submit()}
                         type='primary'
                         style={{
@@ -50,7 +63,14 @@ const Login = () => {
                         Login
                     </Button>
                 </div>
-            </Card>
+                <SocialLogin />
+                <div className="mt-3 text-center">
+                    <Space>
+                        <Text>Don't have an account? </Text>
+                        <Link to={'/sign-up'}>Sign up</Link>
+                    </Space>
+                </div>
+            </Card >
         </div >
     )
 }
