@@ -4,7 +4,7 @@ import { Login, SignUp } from '../screens'
 
 const AuthRouter = () => {
     return (
-        <div className="container">
+        <div className="container-fluid">
             <div className="row">
                 <div className="col">
                     <h1>Fafafa</h1>
@@ -12,7 +12,7 @@ const AuthRouter = () => {
                 <div className="col content-center">
                     <BrowserRouter>
                         <Routes>
-                            <Route path='/' element={<Login />} />
+                            <Route path='/login' element={<Login />} />
                             <Route path='/sign-up' element={<SignUp />} />
                         </Routes>
                     </BrowserRouter>
@@ -22,5 +22,4 @@ const AuthRouter = () => {
 
     )
 }
-
 export default AuthRouter

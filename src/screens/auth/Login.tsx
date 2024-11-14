@@ -13,8 +13,8 @@ const Login = () => {
         console.log(values);
     };
     return (
-        <div>
-            <Card>
+        <>
+            <Card style={{ width: '50%' }}>
                 <div className="text-center">
                     <Title level={2}>Log in to your account</Title>
                     <Paragraph type='secondary'>
@@ -29,7 +29,7 @@ const Login = () => {
                                 message: 'Please enter your Email!!'
                             }
                         ]}>
-                        <Input allowClear maxLength={100} type='email' />
+                        <Input placeholder='Enter your Email' allowClear maxLength={100} type='email' />
                     </Form.Item>
                     <Form.Item name={'password'} label='Password'
                         rules={[
@@ -38,7 +38,7 @@ const Login = () => {
                                 message: 'Please enter your Password!!'
                             }
                         ]}>
-                        <Input.Password maxLength={100} type='password' />
+                        <Input.Password placeholder='* * * * * * * * ' maxLength={100} type='password' />
                     </Form.Item>
                 </Form>
 
@@ -66,12 +66,12 @@ const Login = () => {
                 <SocialLogin />
                 <div className="mt-3 text-center">
                     <Space>
-                        <Text>Don't have an account? </Text>
+                        <Text type='secondary'>Don't have an account? </Text>
                         <Link to={'/sign-up'}>Sign up</Link>
                     </Space>
                 </div>
             </Card >
-        </div >
+        </ >
     )
 }
 
